@@ -64,6 +64,8 @@ import java.util.regex.Pattern;
 
 public class DownloadThread extends Thread {
 
+    private static long delay = 25000;
+
     private static final String[] mainProviders =
             {
                     "LyricWiki",
@@ -94,6 +96,7 @@ public class DownloadThread extends Thread {
 
             @SuppressWarnings("unchecked")
             public Lyrics download(String url, String artist, String title) {
+
                 Lyrics lyrics = null;
                 for (String provider : providers) {
                     switch (provider) {
@@ -187,6 +190,14 @@ public class DownloadThread extends Thread {
 
             public void run() {
                 Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+
+                delay -= 5000;
+                if (delay < 0) delay = 0;
+                try {
+                    Thread.sleep(delay);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
                 Lyrics lyrics;
                 String artist = null;

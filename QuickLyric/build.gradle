@@ -50,12 +50,12 @@ android {
 
     signingConfigs {
 
-        release {
+        /*release {
             storeFile file('../../release.keystore')
             storePassword RELEASE_STORE_PASSWORD
             keyAlias RELEASE_KEY_ALIAS
             keyPassword RELEASE_KEY_PASSWORD
-        }
+        }*/
     }
 
     buildTypes {
@@ -63,7 +63,7 @@ android {
             shrinkResources false
             minifyEnabled false
             useProguard false
-            signingConfig signingConfigs.release
+            //signingConfig signingConfigs.release
             proguardFiles 'proguard-rules.pro', getDefaultProguardFile('proguard-android-optimize.txt')
         }
     }
